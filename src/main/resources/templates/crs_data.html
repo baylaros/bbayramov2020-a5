@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <style>
+        form
+        {
+            background-color: bisque;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Student Data</title>
+</head>
+<body>
+
+
+<form action="/courses/save/" th:object="${course}" method="post">
+    <div th:if="${#fields.hasErrors('*')}" >
+        <p>Please Correct Errors Below</p>
+    </div>
+    <div class="container">
+        <input type="hidden" name="CRN" th:value="${course.CRN}"><br>
+        Course Description: <input type="text" name="courseDesc" th:value="${course.courseDesc}"><br>
+        <span th:if="${#fields.hasErrors('courseDesc')}">
+        <ul>
+            <li th:each="err : ${#fields.errors('courseDesc')}" th:text="${err}"/>
+        </ul>
+    </span>
+
+        Course Name: <input type="text" name="courseName" th:value="${course.courseName}"><br>
+        <span th:if="${#fields.hasErrors('courseName')}">
+        <ul>
+            <li th:each="err : ${#fields.errors('courseName')}" th:text="${err}"/>
+        </ul>
+    </span>
+
+        <button type="submit">Save</button>
+    </div>
+</form>
+</body>
+</html>

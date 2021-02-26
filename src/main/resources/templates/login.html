@@ -1,0 +1,52 @@
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <style>
+        div
+        {
+            background-color: bisque;
+            max-width:400px;
+            padding:20px;
+        }
+        a
+        {
+            font-size:1em;
+            font-family:"Courier New",Courier;
+            color: darkred;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Please Log in</title>
+
+</head>
+<body>
+
+
+
+<form name="f" th:action="@{/dologin}" method="post" >
+    <center>
+    <div th:if="${error}" >
+        <!--<p th:text="${errorinfo}"> Please Correct Errors Below</p>-->
+        <a th:text="${errorinfo}">Student name</a><br>
+
+    </div>
+
+    <div class="container">
+        <label for="login"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" id="login" name="login" required>
+
+        </br>
+        </br>
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" id="password" name="password" required>
+
+        </br>
+        </br>
+        <button type="submit">Login</button>
+
+    </div>
+    </center>
+</form>
+
+<center><a href="/stloginpamel">Student Panel</a></center>
+</body>
+</html>

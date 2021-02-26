@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <style>
+        table, td, th {
+            border: 1px solid black;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td {
+            height: 50px;
+            vertical-align: bottom;
+        }
+        a{
+            color: darkred;
+        }
+    </style>
+
+    <meta charset="UTF-8">
+    <title>All Courses</title>
+</head>
+<body>
+<section>
+    <!--for demo wrap-->
+    <h1>List of Courses</h1>
+    <div class="tbl-header">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <thead>
+            <tr>
+                <th>CRN</th>
+                <th>Course Name</th>
+                <th>Course Description</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+    <div class="tbl-content">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <tbody>
+            <tr th:each="course: ${courseList}">
+                <td th:text="${course.CRN}">0</td>
+                <td th:text="${course.courseName}">Jamal</td>
+                <td th:text="${course.courseDesc}">Hasanov</td>
+
+                <td>
+                    <a th:href="@{/courses/update/{id}(id=${course.CRN})}">Update</a>
+                </td>
+                <td>
+                    <a th:href="@{/courses/delete/{id}(id=${course.CRN})}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <a href="/courses/new">Add a new course</a> <br>
+    <a href="/admindash">Back to Dashboard</a>
+</section>
+
+
+
+
+
+
+
+</body>
+</html>

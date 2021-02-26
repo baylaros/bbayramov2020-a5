@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/XSL/Transform">
+<head>
+    <meta charset="UTF-8">
+    <title>Web & Mobile 2 Error page</title>
+    <style type="text/css">
+        h1
+        {
+            background-color: darkred;
+            padding:20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Error! Please login!</h1>
+<br>
+<a th:text="${exception.getMessage()}"></a>
+<a th:text="${message}"></a>
+
+
+</body>
+</html>

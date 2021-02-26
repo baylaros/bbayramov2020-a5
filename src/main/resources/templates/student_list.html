@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head>
+    <style>
+
+        table, td, th {
+            border: 1px solid black;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td {
+            height: 50px;
+            vertical-align: bottom;
+        }
+        a{
+            color: darkred;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>All Students</title>
+</head>
+
+<body>
+<section>
+    <!--for demo wrap-->
+    <h1>List of Students</h1>
+    <div class="tbl-header">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>View</th>
+                <th>Update</th>
+                <th>Delete</th>
+
+            </tr>
+            </thead>
+        </table>
+        </br>
+    </div>
+    <div class="tbl-content">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <tbody>
+            <tr th:each="student: ${studentList}">
+                <td th:text="${student.id}">0</td>
+                <td th:text="${student.firstName}">Jamal</td>
+                <td th:text="${student.lastName}">Hasanov</td>
+                <td>
+                    <a th:href="@{/students/{id}(id=${student.id})}">View</a>
+                </td>
+                <td>
+                    <a th:href="@{/students/update/{id}(id=${student.id})}">Update</a>
+                </td>
+                <td>
+                    <a th:href="@{/students/delete/{id}(id=${student.id})}">Delete</a>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+    <a href="/students/new">Add a new student</a>
+    <br>
+    <a href="/admindash">Back to Dashboard</a>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+</span>
+</body>
+
+</html>

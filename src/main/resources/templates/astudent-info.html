@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Student info</title>
+    <style type="text/css">
+        h1
+        {
+            background-color: darkred;
+            padding:20px;
+        }
+    </style>
+</head>
+<body>
+Student information: <br>
+
+<a th:text="${studentInfo.firstName}">Student name</a><br>
+<a th:text="${studentInfo.lastName}">Student surname</a><br>
+</body>
+<br>
+Enrolled courses:<br>
+
+<table>
+    <tr th:each="course: ${studentInfo.enrolledCourses}">
+        <td th:text="${course.CRN}">0</td>
+        <td th:text="${course.courseDesc}">No</td>
+        <td th:text="${course.courseName}">No</td>
+
+    </tr>
+</table>
+
+<br>
+Available courses:<br>
+
+<table>
+    <tr th:each="course: ${all_courses}">
+        <th:block th:if="${!studentInfo.enrolledCourses.contains(course)}">
+            <td th:text="${course.CRN}">0</td>
+            <td th:text="${course.courseDesc}">No</td>
+            <td th:text="${course.courseName}">No</td>
+            <td>
+                <a th:href="@{/courses/enroll/{stId}/{CRN}(CRN=${course.CRN},stId=${studentInfo.id})}">Enroll to a course</a>
+            </td>
+
+        </th:block>
+
+    </tr>
+</table>
+
+</html>
